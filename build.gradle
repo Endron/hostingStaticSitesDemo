@@ -1,5 +1,27 @@
-apply plugin: 'groovy'
-apply plugin: 'eclipse'
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'spring-boot'
+
+repositories {
+  mavenCentral()
+  jcenter()
+}
+
+dependencies {
+  compile('org.springframework.boot:spring-boot-starter-web',
+      )
+
+  testCompile("org.springframework.boot:spring-boot-starter-test",
+      )
+}
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.2.1'
