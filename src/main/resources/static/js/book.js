@@ -21,17 +21,12 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-(function (angular) {
-    'use strict';
-    angular.module('book', [])
-            .controller('BookController', function () {
-                this.findAllBooks = function() {
-                    return [
-                        {'title': 'The Lord of the Rings',
-                            'author': 'J. R. R. Tolkien'},
-                        {'title': 'The Hitchhiker\'s Guide to the Galaxy',
-                            'author': 'Douglas Adams'}
-                    ];
-                };
-            });
-})(window.angular);
+var bookControllers = angular.module('bookControllers', []);
+
+bookControllers.controller('BookList', ['$scope', '$http', 
+    function($scope, $http) {
+        $http.get('book/list').success(function(data) {
+           $scope.bookList = data; 
+        });
+    }
+]);
