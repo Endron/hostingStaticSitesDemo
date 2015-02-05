@@ -21,31 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.github.endron.hostingStaticSitesDemo;
+package io.github.endron.hostingStaticSitesDemo.data;
 
-import com.github.fakemongo.Fongo;
-import com.mongodb.Mongo;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import org.springframework.data.repository.CrudRepository;
 
 /**
- * Main class of the Application.
+ * Repository to access Books in the database.
  */
-@SpringBootApplication
-public class Application {
-
-    /**
-     * Main method of the application.
-     *
-     * @param args commandline arguments
-     */
-    public static void main(final String... args) {
-        SpringApplication.run(Application.class, args);
-    }
-
-    @Bean
-    public Mongo mongo() {
-        return new Fongo("db").getMongo();
-    }
+public interface BookRepository extends CrudRepository<Book, String> {
+    // no implementation
 }

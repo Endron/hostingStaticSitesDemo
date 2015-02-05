@@ -21,31 +21,45 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.github.endron.hostingStaticSitesDemo;
+package io.github.endron.hostingStaticSitesDemo.data;
 
-import com.github.fakemongo.Fongo;
-import com.mongodb.Mongo;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
+import java.util.UUID;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
- * Main class of the Application.
+ * Entity class representing a books in the database.
  */
-@SpringBootApplication
-public class Application {
+@Document
+public class Book {
+    
+    @Id
+    private String id = UUID.randomUUID().toString();
+    
+    private String title;
+    private String author;
 
-    /**
-     * Main method of the application.
-     *
-     * @param args commandline arguments
-     */
-    public static void main(final String... args) {
-        SpringApplication.run(Application.class, args);
+    public String getId() {
+        return id;
     }
 
-    @Bean
-    public Mongo mongo() {
-        return new Fongo("db").getMongo();
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(final String title) {
+        this.title = title;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(final String author) {
+        this.author = author;
     }
 }

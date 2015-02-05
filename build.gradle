@@ -17,6 +17,8 @@ repositories {
 
 dependencies {
   compile('org.springframework.boot:spring-boot-starter-web',
+        'org.springframework.boot:spring-boot-starter-data-mongodb',
+        'com.github.fakemongo:fongo:1.5.10',
       )
 
   testCompile("org.springframework.boot:spring-boot-starter-test",
