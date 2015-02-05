@@ -21,34 +21,17 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
-    }
-}
-
-apply plugin: 'java'
-apply plugin: 'spring-boot'
-
-repositories {
-    mavenCentral()
-    jcenter()
-}
-
-dependencies {
-    compile 'org.springframework.boot:spring-boot-starter-web'
-    compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
-    compile 'com.github.fakemongo:fongo:1.5.10'
-        
-    runtime 'org.webjars:angularjs:1.3.11'
-
-    testCompile "org.springframework.boot:spring-boot-starter-test"
-
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
-}
+(function (angular) {
+    'use strict';
+    angular.module('book', [])
+            .controller('BookController', function () {
+                this.findAllBooks = function() {
+                    return [
+                        {'title': 'The Lord of the Rings',
+                            'author': 'J. R. R. Tolkien'},
+                        {'title': 'The Hitchhiker\'s Guide to the Galaxy',
+                            'author': 'Douglas Adams'}
+                    ];
+                };
+            });
+})(window.angular);
