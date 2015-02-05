@@ -21,45 +21,38 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.github.endron.hostingStaticSitesDemo.data;
+package io.github.endron.hostingStaticSitesDemo.controller;
 
-import java.util.UUID;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import io.github.endron.hostingStaticSitesDemo.data.Book;
+import io.github.endron.hostingStaticSitesDemo.data.BookRepository;
+import java.util.LinkedList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
- * Entity class representing a books in the database.
+ * Rest-Controller to access books in the database.
  */
-@Document
-public class Book {
+@RestController
+@RequestMapping("book")
+public class BookController {
 
-    @Id
-    private String id = UUID.randomUUID().toString();
+    @Autowired
+    BookRepository repository;
 
-    private String title;
-    private String author;
+    /**
+     * Returns a List of all Books in the database.
+     *
+     * @return all Books in the database
+     */
+    @RequestMapping("list")
+    public List<Book> list() {
+        final List<Book> books = new LinkedList<>();
+        for (final Book book : repository.findAll()) {
+            books.add(book);
+        }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(final String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(final String author) {
-        this.author = author;
+        return books;
     }
 }

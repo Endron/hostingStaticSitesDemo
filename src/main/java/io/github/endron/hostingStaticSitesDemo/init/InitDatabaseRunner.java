@@ -21,45 +21,34 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package io.github.endron.hostingStaticSitesDemo.data;
+package io.github.endron.hostingStaticSitesDemo.init;
 
-import java.util.UUID;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import io.github.endron.hostingStaticSitesDemo.data.Book;
+import io.github.endron.hostingStaticSitesDemo.data.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 
 /**
- * Entity class representing a books in the database.
+ * CommandLineRunner to initialize the database with some Books.
  */
-@Document
-public class Book {
+@Component
+public class InitDatabaseRunner implements CommandLineRunner{
+    
+    @Autowired
+    BookRepository repository;
 
-    @Id
-    private String id = UUID.randomUUID().toString();
-
-    private String title;
-    private String author;
-
-    public String getId() {
-        return id;
+    @Override
+    public void run(final String... args) throws Exception {
+        repository.save(createBook("The Lord of the Rings", "J. R. R. Tolkien"));
+        repository.save(createBook("The Hitchhiker's Guide to the Galaxy", "Douglas Adams"));
     }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(final String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(final String author) {
-        this.author = author;
+ 
+    private Book createBook(final String title, final String author) {
+        final Book book = new Book();
+        book.setTitle(title);
+        book.setAuthor(author);
+        
+        return book;
     }
 }
