@@ -33,8 +33,8 @@ import org.springframework.stereotype.Component;
  * CommandLineRunner to initialize the database with some Books.
  */
 @Component
-public class InitDatabaseRunner implements CommandLineRunner{
-    
+public class InitDatabaseRunner implements CommandLineRunner {
+
     @Autowired
     BookRepository repository;
 
@@ -43,12 +43,12 @@ public class InitDatabaseRunner implements CommandLineRunner{
         repository.save(createBook("The Lord of the Rings", "J. R. R. Tolkien"));
         repository.save(createBook("The Hitchhiker's Guide to the Galaxy", "Douglas Adams"));
     }
- 
+
     private Book createBook(final String title, final String author) {
         final Book book = new Book();
         book.setTitle(title);
         book.setAuthor(author);
-        
+
         return book;
     }
 }
