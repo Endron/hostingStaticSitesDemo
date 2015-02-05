@@ -23,10 +23,10 @@
  */
 var bookControllers = angular.module('bookControllers', []);
 
-bookControllers.controller('BookList', ['$scope', '$http', 
-    function($scope, $http) {
-        $http.get('book/list').success(function(data) {
-           $scope.bookList = data; 
+bookControllers.controller('BookList', ['$scope', '$http',
+    function ($scope, $http) {
+        $http.get('book/list').success(function (data) {
+            $scope.bookList = data;
         });
     }
 ]);
