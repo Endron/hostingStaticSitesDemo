@@ -16,6 +16,6 @@ build
 hs_err_pid*
 
 # NetBeans Files
-/.nb-gradle/private/
+/.nb-gradle/
 .nb-gradle-properties
 
