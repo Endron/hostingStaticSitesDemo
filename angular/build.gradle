@@ -8,4 +8,5 @@ task npmTest(type: NpmTask) {
     args = ['test']
 }
 
+
 test.dependsOn(npmTest);
