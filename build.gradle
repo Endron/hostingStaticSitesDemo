@@ -30,7 +30,11 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
+plugins {
+  id "com.moowork.node" version "0.8"
+  id 'java'
+}
+
 apply plugin: 'spring-boot'
 
 repositories {
@@ -57,3 +61,26 @@ task stage {
 task wrapper(type: Wrapper) {
     gradleVersion = '2.2.1'
 }
+
+project.ext {
+    jasmineDependencies = ['karma', 'karma-jasmine', 'karma-chrome-launcher', 'karma-phantomjs-launcher']
+    karmaExec = file('node_modules/karma/bin/karma')
+    karmaConfig = 'karma.conf.js'
+}
+
+task setupJasmine(type: NpmTask) {
+    outputs.dir file('node_modules')
+    args = ['install'] + jasmineDependencies
+}
+
+task jasmineRun(type: NodeTask, dependsOn: 'setupJasmine') {
+    script = karmaExec
+    args = ['start', karmaConfig, '--single-run']
+}
+
+task jasmineWatch(type: NodeTask, dependsOn: 'setupJasmine') {
+        script = karmaExec
+        args = ['start', karmaConfig]
+}
+
+test.dependsOn jasmineRun
