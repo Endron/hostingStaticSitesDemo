@@ -6,6 +6,8 @@ module.exports = function (config) {
             'PhantomJS'
         ],
         files: [
+            'node_modules/**/*.js',
+            'src/main/resources/**/*.js',
             'src/test/js/**/*.spec.js'
         ]
     });
