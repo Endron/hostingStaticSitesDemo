@@ -3,7 +3,6 @@ module.exports = function (config) {
         basePath: './',
         frameworks: ['jasmine'],
         browsers: [
-            'Chrome',
             'PhantomJS'
         ],
         files: [
