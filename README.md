@@ -1,4 +1,4 @@
-# hostingStaticSitesDemo [![Build Status](https://travis-ci.org/Endron/hostingStaticSitesDemo.svg?branch=angular_with_rest_backend)](https://travis-ci.org/Endron/hostingStaticSitesDemo)
+# hostingStaticSitesDemo [![Build Status](https://travis-ci.org/Endron/hostingStaticSitesDemo.svg?branch=angular_sub_project)](https://travis-ci.org/Endron/hostingStaticSitesDemo)
 
 Demo application for hosting a static website on Heroku using some Java and Spring Boot. 
 Spring Boot is used to bootstrap a Tomcat Webserver delivering the static website.
