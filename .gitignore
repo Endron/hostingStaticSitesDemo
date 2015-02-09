@@ -17,3 +17,7 @@ hs_err_pid*
 /.nb-gradle/
 .nb-gradle-properties
 
+# Intellij
+.idea
+*.iml
+
