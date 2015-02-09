@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.davidmoten:grumpy-core:0.2.2">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.davidmoten/grumpy-core/0.2.2/48b4cff02a62a3a9ea876dd2486225aefd225706/grumpy-core-0.2.2.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.davidmoten/grumpy-core/0.2.2/b85068094d0835f98d0122849eda2894c198e798/grumpy-core-0.2.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
