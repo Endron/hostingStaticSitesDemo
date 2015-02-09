@@ -21,12 +21,19 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-var bookControllers = angular.module('bookControllers', []);
+(function(){
+    var app = angular.module('bookStore', [ 'ngRoute' ])
+        .config(function($routeProvider) {
 
-bookControllers.controller('BookList', ['$scope', '$http',
-    function ($scope, $http) {
-        $http.get('book/list').success(function (data) {
-            $scope.bookList = data;
+            $routeProvider.when('/books', {
+                templateUrl : 'books.html',
+                controller : 'booklist'
+            }).otherwise('/');
+
+        })
+        .controller('booklist', function ($scope, $http) {
+            $http.get('/book/list').success(function (data) {
+                $scope.bookList = data;
+            });
         });
-    }
-]);
+})();
