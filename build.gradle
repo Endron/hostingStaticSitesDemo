@@ -3,11 +3,10 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.1.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.2.5.RELEASE"
     }
 }
 
-apply plugin: 'java'
 apply plugin: 'spring-boot'
 
 repositories {
@@ -16,17 +15,10 @@ repositories {
 }
 
 dependencies {
-  compile('org.springframework.boot:spring-boot-starter-web',
-      )
-
-  testCompile("org.springframework.boot:spring-boot-starter-test",
-      )
+  compile 'org.springframework.boot:spring-boot-starter-web'
+  testCompile 'org.springframework.boot:spring-boot-starter-test'
 }
 
 task stage {
     dependsOn 'assemble'
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
 }
